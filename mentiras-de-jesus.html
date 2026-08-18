@@ -25,6 +25,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
+    <script src="mentiras.js" defer></script>
 </head>
 
 <body class="lies-page">
@@ -211,33 +212,17 @@
                         <small>ÍNDICE DE VERDADE: 11%</small>
                     </article>
                 </div>
-            </div>
-        </section>
 
-        <section class="publisher-preview section" aria-labelledby="publisher-title">
-            <div class="container publisher-layout">
-                <div>
-                    <p class="section-kicker">[ PRÓXIMA FASE ]</p>
-                    <h2 id="publisher-title">A bancada do Jesus.</h2>
-                    <p>
-                        Esta é a prévia do espaço em que Jesus poderá publicar novas
-                        mentiras. O formulário ainda está descansando no gelo.
-                    </p>
-                </div>
-
-                <div class="composer-shell">
-                    <div class="composer-bar">
-                        <div class="composer-user">
-                            <span aria-hidden="true">J</span>
-                            <p><strong>Jesus</strong><small>Editor de mentiras</small></p>
+                <div class="published-lies" id="publishedLiesSection" hidden>
+                    <div class="published-lies-heading">
+                        <div>
+                            <p class="section-kicker">[ DIRETO DA REDAÇÃO ]</p>
+                            <h2>Novas mentiras, mesma procedência.</h2>
                         </div>
-                        <span class="coming-soon">EM BREVE</span>
+                        <p>Publicadas pelo Jesus e entregues sem qualquer compromisso com os fatos.</p>
                     </div>
-                    <div class="composer-field">Escreva uma mentira difícil de defender…</div>
-                    <div class="composer-actions">
-                        <span>+ Adicionar prova duvidosa</span>
-                        <span class="composer-button">Publicar mentira</span>
-                    </div>
+
+                    <div class="published-lies-grid" id="publishedLies" aria-live="polite"></div>
                 </div>
             </div>
         </section>
@@ -255,7 +240,7 @@
             <nav aria-label="Navegação do rodapé">
                 <a href="index.html">Início</a>
                 <a href="#arquivo">Mentiras</a>
-                <a href="#publisher-title">Bancada do Jesus</a>
+                <a href="index.html#atividades">RafaCorp</a>
             </nav>
 
             <p class="footer-legal">

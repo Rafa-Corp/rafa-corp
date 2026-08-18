@@ -1485,6 +1485,153 @@ button {
     letter-spacing: 0.1em;
 }
 
+.published-lies {
+    margin-top: clamp(82px, 10vw, 132px);
+    padding-top: clamp(70px, 8vw, 104px);
+    border-top: 1px solid rgba(101, 223, 243, 0.14);
+}
+
+.published-lies[hidden] {
+    display: none;
+}
+
+.published-lies-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.36fr);
+    align-items: end;
+    gap: 42px;
+    margin-bottom: 42px;
+}
+
+.published-lies-heading h2 {
+    max-width: 780px;
+    margin: 15px 0 0;
+    font-size: clamp(2.6rem, 5.4vw, 5.2rem);
+    font-weight: 750;
+    letter-spacing: -0.065em;
+    line-height: 0.94;
+}
+
+.published-lies-heading > p {
+    margin: 0;
+    color: #829da3;
+    font-size: 0.84rem;
+    line-height: 1.7;
+}
+
+.published-lies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.published-lie-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 390px;
+    padding: clamp(24px, 3.2vw, 36px);
+    border: 1px solid rgba(101, 223, 243, 0.2);
+    border-radius: 26px;
+    background:
+        radial-gradient(circle at 100% 0, rgba(101, 223, 243, 0.11), transparent 36%),
+        #102127;
+}
+
+.published-lie-card::after {
+    content: "J";
+    position: absolute;
+    right: 18px;
+    bottom: -28px;
+    color: rgba(216, 248, 255, 0.025);
+    font-size: 10rem;
+    font-weight: 900;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.published-lie-topline,
+.published-lie-footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.published-lie-topline {
+    color: var(--ice);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.61rem;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+}
+
+.published-lie-topline time {
+    color: #6f8c92;
+    letter-spacing: 0;
+}
+
+.published-lie-category {
+    position: relative;
+    z-index: 1;
+    width: max-content;
+    margin: 36px 0 0;
+    padding: 7px 10px;
+    border: 1px solid rgba(216, 248, 255, 0.1);
+    border-radius: 999px;
+    color: #8ca7ad;
+    font-size: 0.62rem;
+}
+
+.published-lie-card blockquote {
+    position: relative;
+    z-index: 1;
+    min-height: 130px;
+    margin: 24px 0 32px;
+    color: var(--ice-bright);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.75rem, 3.1vw, 2.9rem);
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+}
+
+.published-lie-footer {
+    align-items: flex-start;
+    padding-top: 20px;
+    border-top: 1px solid rgba(216, 248, 255, 0.09);
+}
+
+.published-lie-footer p {
+    max-width: 68%;
+    margin: 0;
+    color: #789198;
+    font-size: 0.7rem;
+    line-height: 1.55;
+}
+
+.published-truth-index {
+    flex: 0 0 auto;
+    padding: 7px 9px;
+    border: 1px solid rgba(255, 177, 71, 0.24);
+    border-radius: 999px;
+    color: #ffb147;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.57rem;
+    font-weight: 750;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.published-lie-card > small {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 18px;
+    color: #577077;
+    font-size: 0.61rem;
+}
+
 .publisher-preview {
     border-top: 1px solid rgba(101, 223, 243, 0.12);
     background: #071114;
@@ -1670,6 +1817,15 @@ button {
         gap: 28px;
     }
 
+    .published-lies-heading {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .published-lies-heading > p {
+        max-width: 620px;
+    }
+
     .lies-section-heading > p {
         max-width: 620px;
     }
@@ -1689,6 +1845,10 @@ button {
 
     .lie-card-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .published-lies-grid {
+        grid-template-columns: 1fr;
     }
 
     .lie-card:last-child {
@@ -1864,6 +2024,10 @@ button {
         grid-template-columns: 1fr;
     }
 
+    .published-lie-card {
+        min-height: 360px;
+    }
+
     .lie-card:last-child {
         grid-column: auto;
         min-height: 330px;
@@ -1952,6 +2116,25 @@ button {
 
     .featured-lie blockquote {
         font-size: clamp(1.8rem, 9vw, 2.5rem);
+    }
+
+    .published-lies-heading h2 {
+        font-size: clamp(2.4rem, 12vw, 3.25rem);
+    }
+
+    .published-lie-card {
+        min-height: 380px;
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    .published-lie-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .published-lie-footer p {
+        max-width: none;
     }
 
     .composer-bar,
