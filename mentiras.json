@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-18T00:00:00-03:00",
+  "posts": [
+    {
+      "id": "mentira-005",
+      "number": 5,
+      "text": "Pinguins batem o ponto deslizando porque o reconhecimento facial não funciona no frio.",
+      "verdict": "A catraca entrevistada preferiu não comentar.",
+      "category": "Tecnologia polar",
+      "truthIndex": 3,
+      "createdAt": "2026-08-18T00:00:00-03:00",
+      "author": "Jesus"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07171c">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="referrer" content="no-referrer">
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; connect-src 'self' https://api.github.com; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    >
+
+    <title>Bancada do Jesus — RafaCorp</title>
+
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o editor</a>
+
+    <header class="admin-header">
+        <div class="admin-container header-inner">
+            <div class="admin-brand">
+                <span>RAFA<strong>CORP</strong><sup>™</sup></span>
+                <small>/ ACESSO EDITORIAL</small>
+            </div>
+
+            <div class="privacy-badge">
+                <span aria-hidden="true"></span>
+                Área não listada
+            </div>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <section class="admin-hero">
+            <div class="admin-grid" aria-hidden="true"></div>
+            <div class="admin-container hero-layout">
+                <div>
+                    <p class="eyebrow">[ TERMINAL J / ACESSO RESTRITO ]</p>
+                    <h1>A bancada<br><em>do Jesus.</em></h1>
+                    <p class="hero-copy">
+                        Publique uma nova mentira no arquivo oficial. O texto entra
+                        no site depois que o GitHub processar a atualização.
+                    </p>
+                </div>
+
+                <aside class="security-card" aria-labelledby="security-title">
+                    <div class="security-icon" aria-hidden="true">J</div>
+                    <div>
+                        <strong id="security-title">Sessão temporária</strong>
+                        <p>O token não é salvo no navegador e desaparece quando esta página é fechada.</p>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="workspace-section">
+            <div class="admin-container workspace-layout">
+                <form class="editor-card" id="lieForm" autocomplete="off" novalidate>
+                    <div class="card-heading">
+                        <div>
+                            <p class="section-label">NOVA PUBLICAÇÃO</p>
+                            <h2>Escreva a mentira.</h2>
+                        </div>
+                        <span id="draftNumber">#006</span>
+                    </div>
+
+                    <div class="field-group token-group">
+                        <label for="githubToken">Token de publicação</label>
+                        <div class="token-input-wrap">
+                            <input
+                                id="githubToken"
+                                name="githubToken"
+                                type="password"
+                                autocomplete="new-password"
+                                spellcheck="false"
+                                minlength="20"
+                                required
+                                placeholder="github_pat_••••••••••••"
+                            >
+                            <button id="toggleToken" type="button" aria-label="Mostrar token">Mostrar</button>
+                        </div>
+                        <p class="field-help">
+                            Use um token fine-grained com acesso somente ao repositório
+                            <strong>Rafa-Corp/rafa-corp</strong> e permissão de Issues: Read and write.
+                        </p>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="label-row">
+                            <label for="lieText">A mentira</label>
+                            <span><output id="lieCount">0</output>/320</span>
+                        </div>
+                        <textarea
+                            id="lieText"
+                            name="lieText"
+                            rows="5"
+                            minlength="10"
+                            maxlength="320"
+                            required
+                            placeholder="Ex.: Pinguins fazem reunião toda terça às 8h…"
+                        ></textarea>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="category">Categoria</label>
+                            <input
+                                id="category"
+                                name="category"
+                                type="text"
+                                value="Pinguins"
+                                maxlength="60"
+                                required
+                            >
+                        </div>
+
+                        <div class="field-group truth-field">
+                            <label for="truthIndex">Índice de verdade</label>
+                            <div>
+                                <input
+                                    id="truthIndex"
+                                    name="truthIndex"
+                                    type="number"
+                                    value="0"
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    required
+                                >
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="label-row">
+                            <label for="verdict">Comentário da redação</label>
+                            <span><output id="verdictCount">0</output>/220</span>
+                        </div>
+                        <textarea
+                            id="verdict"
+                            name="verdict"
+                            rows="3"
+                            minlength="5"
+                            maxlength="220"
+                            required
+                            placeholder="Ex.: Nenhum pinguim aceitou confirmar a informação."
+                        ></textarea>
+                    </div>
+
+                    <div class="publish-row">
+                        <div class="publish-status" id="publishStatus" role="status" aria-live="polite">
+                            Aguardando uma nova mentira.
+                        </div>
+                        <button class="publish-button" id="publishButton" type="submit">
+                            <span>Publicar mentira</span>
+                            <span aria-hidden="true">↗</span>
+                        </button>
+                    </div>
+                </form>
+
+                <aside class="preview-column" aria-labelledby="preview-title">
+                    <div class="preview-heading">
+                        <p class="section-label" id="preview-title">PRÉ-VISUALIZAÇÃO</p>
+                        <span>AO VIVO</span>
+                    </div>
+
+                    <article class="preview-card" id="previewCard">
+                        <div class="preview-topline">
+                            <span id="previewNumber">MENTIRA #006</span>
+                            <span id="previewCategory">PINGUINS</span>
+                        </div>
+                        <blockquote id="previewText">“Sua próxima mentira aparece aqui.”</blockquote>
+                        <div class="preview-verdict">
+                            <span aria-hidden="true">×</span>
+                            <p id="previewVerdict">O comentário da redação aparece aqui.</p>
+                        </div>
+                        <div class="preview-footer">
+                            <span id="previewTruth">0% verdade</span>
+                            <small>Publicado por Jesus</small>
+                        </div>
+                    </article>
+
+                    <details class="token-guide">
+                        <summary>Como preparar o token?</summary>
+                        <ol>
+                            <li>Crie um token fine-grained na sua conta do GitHub.</li>
+                            <li>Selecione apenas o repositório Rafa-Corp/rafa-corp.</li>
+                            <li>Em permissões, habilite Issues: Read and write.</li>
+                            <li>Cole o token no campo somente quando for publicar.</li>
+                        </ol>
+                    </details>
+                </aside>
+            </div>
+        </section>
+
+        <section class="published-section" aria-labelledby="published-title">
+            <div class="admin-container">
+                <div class="published-heading">
+                    <div>
+                        <p class="section-label">ARQUIVO ATUAL</p>
+                        <h2 id="published-title">Últimas publicações.</h2>
+                    </div>
+                    <button id="refreshPosts" type="button">Atualizar arquivo <span aria-hidden="true">↻</span></button>
+                </div>
+
+                <div class="current-posts" id="currentPosts">
+                    <p class="loading-posts">Carregando o arquivo atual…</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="admin-footer">
+        <div class="admin-container">
+            <p>RAFACORP™ / TERMINAL J</p>
+            <p>Nenhuma credencial é armazenada por esta página.</p>
+        </div>
+    </footer>
+</body>
+</html>
