@@ -1,0 +1,48 @@
+:root {
+    background-color: black;
+    color: white;
+    text-align: center;
+    text-decoration: none
+}
+
+header {
+    position: center;
+    font-size: large;
+}
+
+content {
+    font-style: oblique;
+}
+
+.content2 {
+
+    font-size: small;
+}
+
+footer {
+    font-size: small;
+}
+
+.intro {
+
+    font-size: medium;
+    color: white;
+}
+
+.active {
+
+    text-align: left;
+
+}
+
+.navbar1 {
+
+    text-decoration: none;
+    color: inherit
+}
+
+.navbar2 {
+
+    text-decoration: none;
+    color:inherit
+}
