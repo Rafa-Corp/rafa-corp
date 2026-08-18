@@ -3,205 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="theme-color" content="#0d0d0f">
     <meta
         name="description"
-        content="RafaCorp — excelência em atendimento e orientação."
+        content="RafaCorp — soluções extraordinárias para problemas questionáveis, com atendimento humano e seriedade desnecessária."
     >
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="RafaCorp">
+    <meta property="og:title" content="RafaCorp — Sempre com você">
+    <meta
+        property="og:description"
+        content="Soluções extraordinárias para problemas questionáveis."
+    >
+    <meta property="og:url" content="https://rafacorp.com/">
 
     <title>RafaCorp — Sempre com você</title>
 
+    <link rel="canonical" href="https://rafacorp.com/">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
 
 <body>
-    <header class="topbar">
-        <a class="logo" href="#inicio" aria-label="RafaCorp — início">
-            RAFA<span>CORP</span><sup>™</sup>
-        </a>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-        <nav class="menu" aria-label="Navegação principal">
-            <a href="#atividades">Atividades</a>
-            <a href="#manifesto">Manifesto</a>
-        </nav>
+    <header class="site-header" id="topo">
+        <div class="container header-inner">
+            <a class="brand" href="#inicio" aria-label="RafaCorp — início">
+                <span class="brand-name">RAFA<span>CORP</span><sup>™</sup></span>
+                <span class="brand-tagline">
+                    Soluções extraordinárias para problemas questionáveis.
+                </span>
+            </a>
 
-        <a class="header-button" href="#atividades">
-            Conheça a firma
-        </a>
+            <button
+                class="nav-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="site-menu"
+                aria-label="Abrir menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="site-nav" id="site-menu" aria-label="Navegação principal">
+                <a href="#atividades">Atividades</a>
+                <a href="#principios">Princípios</a>
+                <a href="#rafinha">Rafinha</a>
+            </nav>
+
+            <a class="header-action" href="#atividades">Conheça a firma</a>
+        </div>
     </header>
 
-    <main>
+    <main id="conteudo">
         <section class="hero" id="inicio">
-            <div class="background-grid" aria-hidden="true"></div>
-            <div class="background-light" aria-hidden="true"></div>
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+            <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
 
-            <div class="hero-content">
-                <p class="eyebrow">
-                    <span class="status-dot"></span>
-                    Atendimento humano desde sempre
-                </p>
-
-                <h1>
-                    Excelência para todo tipo de
-                    <em>ser humano.</em>
-                </h1>
-
-                <p class="intro">
-                    Do mais ignóbil ao mais formidável, a RafaCorp atende,
-                    orienta e entrega soluções com a mesma convicção:
-                    ninguém deveria enfrentar a internet sozinho.
-                </p>
-
-                <div class="hero-actions">
-                    <a class="primary-button" href="#atividades">
-                        Explorar atividades
-                        <span aria-hidden="true">↓</span>
-                    </a>
-
-                    <p class="countries">
-                        Presente em <strong>157 países</strong><br>
-                        e em alguns grupos de WhatsApp.
+            <div class="container hero-layout">
+                <div class="hero-content">
+                    <p class="eyebrow">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Atendimento humano desde algum momento da história
                     </p>
+
+                    <h1>
+                        Soluções extraordinárias para
+                        <em>problemas questionáveis.</em>
+                    </h1>
+
+                    <p class="hero-intro">
+                        Do mais ignóbil ao mais formidável, a RafaCorp atende,
+                        orienta e entrega soluções com a mesma convicção:
+                        ninguém deveria enfrentar a internet sozinho.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#atividades">
+                            Conheça nossas atividades
+                            <span aria-hidden="true">↓</span>
+                        </a>
+
+                        <a class="button button-secondary" href="#rafinha">
+                            Consultar o Rafinha
+                        </a>
+                    </div>
+
+                    <dl class="hero-metrics">
+                        <div>
+                            <dt>157</dt>
+                            <dd>países*</dd>
+                        </div>
+                        <div>
+                            <dt>99,7%</dt>
+                            <dd>comprometimento</dd>
+                        </div>
+                        <div>
+                            <dt>2</dt>
+                            <dd>divisões sérias</dd>
+                        </div>
+                    </dl>
+
+                    <p class="metric-note">*Incluindo alguns grupos de WhatsApp.</p>
                 </div>
+
+                <aside class="status-card" aria-label="Painel operacional da RafaCorp">
+                    <div class="status-card-header">
+                        <span>RAFA INDEX™</span>
+                        <span class="live-status">
+                            <span aria-hidden="true"></span>
+                            Operacional
+                        </span>
+                    </div>
+
+                    <div class="status-score">
+                        <span class="score-value">99,7</span>
+                        <span class="score-unit">%</span>
+                    </div>
+
+                    <p class="score-caption">
+                        de comprometimento com o que importa.
+                    </p>
+
+                    <div class="status-bars" aria-hidden="true">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="status-list">
+                        <p><span>Internet</span><strong>Ligada</strong></p>
+                        <p><span>Café</span><strong>Quase pronto</strong></p>
+                        <p><span>Seriedade</span><strong>Em análise</strong></p>
+                    </div>
+
+                    <small>*O que importa pode mudar sem aviso prévio.</small>
+                </aside>
             </div>
-
-            <aside class="index-card" aria-label="Indicadores da RafaCorp">
-                <div class="index-header">
-                    <span>RAFA INDEX™</span>
-                    <span class="live">AO VIVO</span>
-                </div>
-
-                <div class="score">
-                    <strong>99,7</strong>
-                    <span>%</span>
-                </div>
-
-                <p>de comprometimento com o que importa* KEK</p>
-
-                <div class="chart" aria-hidden="true">
-                    <span style="height: 40%"></span>
-                    <span style="height: 65%"></span>
-                    <span style="height: 50%"></span>
-                    <span style="height: 80%"></span>
-                    <span style="height: 70%"></span>
-                    <span style="height: 95%"></span>
-                    <span style="height: 75%"></span>
-                    <span style="height: 100%"></span>
-                </div>
-
-                <small>
-                    *O que importa pode mudar sem aviso prévio.
-                </small>
-            </aside>
         </section>
 
-        <section class="activities" id="atividades">
-            <div class="section-heading">
-                <div>
-                    <p class="section-number">[ 01 — ATIVIDADES ]</p>
-                    <h2>Algumas coisas que fazemos muito bem.</h2>
+        <section class="activities section" id="atividades">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">[ 01 — ATIVIDADES ]</p>
+                        <h2>Aqui estão algumas das nossas atividades.</h2>
+                    </div>
+
+                    <p>
+                        Duas divisões. Uma missão. Incontáveis abas abertas e
+                        nenhuma intenção de explicar o histórico do navegador.
+                    </p>
                 </div>
 
-                <p>
-                    Duas divisões. Uma missão. Incontáveis abas abertas
-                    no navegador.
-                </p>
-            </div>
+                <div class="activity-grid">
+                    <article class="activity-card activity-card-green">
+                        <div class="activity-topline">
+                            <span class="activity-number">01</span>
+                            <span class="activity-category">Tecnologia e soluções</span>
+                        </div>
 
-            <div class="card-grid">
-                <a
-                    class="activity-card green-card"
-                    href="https://www.youtube.com/watch?v=IYFGEeOp-8k"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <div class="card-header">
+                        <div class="activity-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5l-3 14"/>
+                            </svg>
+                        </div>
+
+                        <div class="activity-copy">
+                            <h3>RafaDev</h3>
+                            <p>
+                                Desenvolvimento com método, curiosidade e uma
+                                quantidade rigorosamente controlada de improviso.
+                            </p>
+                        </div>
+
+                        <a
+                            class="activity-link"
+                            href="https://www.youtube.com/watch?v=IYFGEeOp-8k"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Acessar divisão
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
+
+                    <article class="activity-card activity-card-purple">
+                        <div class="activity-topline">
+                            <span class="activity-number">02</span>
+                            <span class="activity-category">Pesquisa e cultura</span>
+                        </div>
+
+                        <div class="activity-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 17h4l3 3V4L8 7H4v10ZM15 9a4 4 0 0 1 0 6M17.5 6.5a8 8 0 0 1 0 11"/>
+                            </svg>
+                        </div>
+
+                        <div class="activity-copy">
+                            <h3>RafaMeme</h3>
+                            <p>
+                                Análise avançada do que realmente movimenta a
+                                internet, com absoluto comprometimento com a zoeira.
+                            </p>
+                        </div>
+
+                        <a
+                            class="activity-link"
+                            href="https://www.youtube.com/watch?v=Ei7dzwt9LEk&ab_channel=MrGames120"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Acessar divisão
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="principles section" id="principios">
+            <div class="container principles-layout">
+                <div class="principles-statement">
+                    <p class="section-kicker">[ 02 — PRINCÍPIOS ]</p>
+                    <h2>Um manifesto curto o suficiente para ser lido.</h2>
+                    <blockquote>“Não seja um bosta.”</blockquote>
+                    <p>
+                        Curto, direto e aprovado por unanimidade pelo conselho
+                        administrativo da RafaCorp.
+                    </p>
+                </div>
+
+                <div class="principle-list">
+                    <article>
                         <span>01</span>
-                        <span class="category">Tecnologia e soluções</span>
-                    </div>
+                        <div>
+                            <h3>Clareza improvável</h3>
+                            <p>Se ninguém entendeu, talvez tenha faltado contexto.</p>
+                        </div>
+                    </article>
 
-                    <div class="card-content">
-                        <h3>RafaDev</h3>
-
-                        <p>
-                            Desenvolvimento com método, curiosidade e uma
-                            quantidade rigorosamente controlada de improviso.
-                        </p>
-                    </div>
-
-                    <div class="card-footer">
-                        <span>Acessar divisão</span>
-                        <span class="arrow" aria-hidden="true">↗</span>
-                    </div>
-                </a>
-
-                <a
-                    class="activity-card purple-card"
-                    href="https://www.youtube.com/watch?v=Ei7dzwt9LEk&ab_channel=MrGames120"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <div class="card-header">
+                    <article>
                         <span>02</span>
-                        <span class="category">Pesquisa e cultura</span>
-                    </div>
+                        <div>
+                            <h3>Improviso controlado</h3>
+                            <p>Planejamos tudo, inclusive o que saiu do plano.</p>
+                        </div>
+                    </article>
 
-                    <div class="card-content">
-                        <h3>RafaMeme</h3>
-
-                        <p>
-                            Análise avançada do que realmente movimenta a
-                            internet, com absoluto comprometimento com a zoeira.
-                        </p>
-                    </div>
-
-                    <div class="card-footer">
-                        <span>Acessar divisão</span>
-                        <span class="arrow" aria-hidden="true">↗</span>
-                    </div>
-                </a>
+                    <article>
+                        <span>03</span>
+                        <div>
+                            <h3>Humanidade operacional</h3>
+                            <p>Antes do ticket existe uma pessoa. Às vezes.</p>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section class="manifesto" id="manifesto">
-            <p class="section-number">[ 02 — PRINCÍPIOS ]</p>
-
-            <blockquote>“Não seja um bosta.”</blockquote>
-
-            <p class="manifesto-description">
-                Curto, direto e aprovado pelo conselho administrativo
-                da RafaCorp.
-            </p>
-
-            <div class="advice-box">
-                <div>
-                    <p class="advice-label">ORIENTAÇÃO DO DIA</p>
-
-                    <p id="adviceText" class="advice-text" aria-live="polite">
-                        Se o problema parece impossível, provavelmente
-                        faltou café ou contexto.
+        <section class="rafinha section" id="rafinha">
+            <div class="container rafinha-layout">
+                <div class="rafinha-heading">
+                    <p class="section-kicker">[ 03 — CONSULTORIA INTERNA ]</p>
+                    <h2>Pensamento do Rafinha</h2>
+                    <p>
+                        Conselhos selecionados por um algoritmo de altíssimo rigor:
+                        o JavaScript escolhe um e torce pelo melhor.
                     </p>
                 </div>
 
-                <button id="adviceButton" type="button">
-                    Gerar nova orientação
-                    <span aria-hidden="true">↻</span>
-                </button>
+                <article class="thought-card">
+                    <div class="thought-card-topline">
+                        <span>PENSAMENTO DO RAFINHA</span>
+                        <span class="thought-seal">CERTIFICADO™</span>
+                    </div>
+
+                    <blockquote id="thoughtText" aria-live="polite">
+                        Carregando sabedoria questionável…
+                    </blockquote>
+
+                    <div class="thought-footer">
+                        <p>— Rafinha, provavelmente</p>
+                        <button id="thoughtButton" type="button">
+                            Outro pensamento
+                            <span aria-hidden="true">↻</span>
+                        </button>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer>
-        <a class="logo" href="#inicio">
-            RAFA<span>CORP</span><sup>™</sup>
-        </a>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <a class="brand footer-brand" href="#inicio">
+                    <span class="brand-name">RAFA<span>CORP</span><sup>™</sup></span>
+                </a>
+                <p>Levando muito a sério o que claramente não deveria.</p>
+            </div>
 
-        <p>RafaCorp, sempre com você.</p>
+            <nav aria-label="Navegação do rodapé">
+                <a href="#atividades">Atividades</a>
+                <a href="#principios">Princípios</a>
+                <a href="#rafinha">Rafinha</a>
+            </nav>
 
-        <p>
-            © <span id="currentYear"></span> — Presente em 157 países.
-        </p>
+            <p class="footer-legal">
+                © <span id="currentYear"></span> RafaCorp™<br>
+                Todos os direitos provavelmente reservados.
+            </p>
+        </div>
     </footer>
 </body>
 </html>
