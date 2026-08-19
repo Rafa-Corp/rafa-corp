@@ -25,6 +25,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
+    <script src="dota.js" defer></script>
 </head>
 
 <body>
@@ -54,6 +55,7 @@
             <nav class="site-nav" id="site-menu" aria-label="Navegação principal">
                 <a href="#atividades">Atividades</a>
                 <a href="#principios">Princípios</a>
+                <a href="#dota-do-ceo">Dota do CEO</a>
                 <a href="#rafinha">Rafinha</a>
                 <a class="nav-special" href="mentiras-de-jesus.html">As Mentiras de Jesus</a>
             </nav>
@@ -275,10 +277,124 @@
             </div>
         </section>
 
+        <section class="dota section" id="dota-do-ceo" aria-labelledby="dota-title">
+            <div class="dota-grid-bg" aria-hidden="true"></div>
+
+            <div class="container">
+                <div class="dota-heading">
+                    <div>
+                        <p class="section-kicker">[ 03 — PERFORMANCE EXECUTIVA ]</p>
+                        <h2 id="dota-title">Dota do CEO.</h2>
+                    </div>
+
+                    <div class="dota-source">
+                        <span class="dota-live" id="dotaDataStatus">
+                            <span aria-hidden="true"></span>
+                            <span id="dotaDataStatusText">OpenDota ao vivo</span>
+                        </span>
+                        <a
+                            href="https://www.opendota.com/players/75694096"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Ver perfil completo
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dota-dashboard" id="dotaDashboard" aria-live="polite">
+                    <article class="dota-profile-card">
+                        <div class="dota-card-topline">
+                            <span>CEO PROFILE / 75694096</span>
+                            <span class="dota-certified">CERTIFICADO™</span>
+                        </div>
+
+                        <div class="dota-profile">
+                            <div class="dota-avatar" aria-hidden="true">RF</div>
+                            <div>
+                                <p>RAFINHA</p>
+                                <span>Chief Executive Offlaner</span>
+                            </div>
+                        </div>
+
+                        <div class="dota-winrate-ring" id="dotaWinrateRing" role="img" aria-label="Aproveitamento geral: 48,5%">
+                            <div>
+                                <strong id="dotaWinrate">48,5%</strong>
+                                <span>aproveitamento</span>
+                            </div>
+                        </div>
+
+                        <div class="dota-profile-footer">
+                            <span>STATUS DA CONTA</span>
+                            <strong>Operacional</strong>
+                        </div>
+                    </article>
+
+                    <div class="dota-performance">
+                        <div class="dota-stat-grid">
+                            <article class="dota-stat dota-stat-win">
+                                <span>PARTIDAS VENCIDAS</span>
+                                <strong id="dotaWins">364</strong>
+                                <small>Vitórias registradas</small>
+                            </article>
+
+                            <article class="dota-stat dota-stat-loss">
+                                <span>PARTIDAS PERDIDAS</span>
+                                <strong id="dotaLosses">387</strong>
+                                <small>Derrotas documentadas</small>
+                            </article>
+
+                            <article class="dota-stat dota-stat-total">
+                                <span>TOTAL DE PARTIDAS</span>
+                                <strong id="dotaTotal">751</strong>
+                                <small>Jogos analisados</small>
+                            </article>
+                        </div>
+
+                        <article class="dota-best-hero">
+                            <div class="best-hero-emblem" aria-hidden="true">
+                                <svg viewBox="0 0 64 64">
+                                    <circle cx="32" cy="32" r="21"/>
+                                    <circle cx="32" cy="32" r="11"/>
+                                    <path d="M46 18 31 33M42 17l6-1-1 6M18 47l9-9"/>
+                                </svg>
+                            </div>
+
+                            <div class="best-hero-copy">
+                                <p>Melhor herói estatisticamente</p>
+                                <h3 id="dotaBestHero">Clinkz</h3>
+                                <span id="dotaBestHeroSummary">66,7% de vitórias</span>
+                            </div>
+
+                            <dl class="best-hero-stats">
+                                <div>
+                                    <dt id="dotaBestHeroWins">10</dt>
+                                    <dd>vitórias</dd>
+                                </div>
+                                <div>
+                                    <dt id="dotaBestHeroGames">15</dt>
+                                    <dd>partidas</dd>
+                                </div>
+                            </dl>
+
+                            <p class="best-hero-rule">
+                                Critério: maior taxa de vitória entre heróis com pelo menos 10 partidas.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <p class="dota-updated" id="dotaUpdated">
+                    Fotografia dos dados em 18 de agosto de 2026.
+                </p>
+            </div>
+        </section>
+
         <section class="rafinha section" id="rafinha">
             <div class="container rafinha-layout">
                 <div class="rafinha-heading">
-                    <p class="section-kicker">[ 03 — CONSULTORIA INTERNA ]</p>
+                    <p class="section-kicker">[ 04 — CONSULTORIA INTERNA ]</p>
                     <h2>Pensamento do Rafinha</h2>
                     <p>
                         Conselhos selecionados por um algoritmo de altíssimo rigor:
@@ -320,6 +436,7 @@
             <nav aria-label="Navegação do rodapé">
                 <a href="#atividades">Atividades</a>
                 <a href="#principios">Princípios</a>
+                <a href="#dota-do-ceo">Dota do CEO</a>
                 <a href="#rafinha">Rafinha</a>
                 <a href="mentiras-de-jesus.html">As Mentiras de Jesus</a>
             </nav>
