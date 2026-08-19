@@ -16,6 +16,7 @@
     const categoryInput = document.querySelector("#category");
     const truthInput = document.querySelector("#truthIndex");
     const publishStatus = document.querySelector("#publishStatus");
+    const publishButton = document.querySelector("#publishButton");
     const refreshButton = document.querySelector("#refreshPosts");
     const currentPosts = document.querySelector("#currentPosts");
     const draftNumber = document.querySelector("#draftNumber");
@@ -29,6 +30,7 @@
 
     let loadedPosts = [];
     let nextNumber = 6;
+    let dynamicArchiveReady = false;
 
     function setStatus(message, type = "neutral") {
         publishStatus.textContent = message;
@@ -46,6 +48,60 @@
         }, 5);
 
         return highest + 1;
+    }
+
+    function normalizeArchivePost(post) {
+        const number = Number(post?.number);
+        const truthIndex = Number(post?.truthIndex);
+        const createdAt = new Date(post?.createdAt);
+
+        if (
+            !post ||
+            typeof post.text !== "string" ||
+            typeof post.verdict !== "string" ||
+            typeof post.category !== "string" ||
+            !Number.isInteger(number) ||
+            number < 1 ||
+            !Number.isFinite(truthIndex) ||
+            Number.isNaN(createdAt.getTime())
+        ) {
+            return null;
+        }
+
+        return {
+            ...post,
+            number,
+            text: cleanText(post.text, 320),
+            verdict: cleanText(post.verdict, 220),
+            category: cleanText(post.category, 60),
+            truthIndex: Math.min(100, Math.max(0, Math.round(truthIndex))),
+            createdAt: createdAt.toISOString()
+        };
+    }
+
+    function deduplicatePosts(posts) {
+        const uniquePosts = new Map();
+
+        posts.forEach((post) => {
+            const normalizedPost = normalizeArchivePost(post);
+
+            if (!normalizedPost) {
+                return;
+            }
+
+            const existing = uniquePosts.get(normalizedPost.number);
+
+            if (!existing || normalizedPost.createdAt >= existing.createdAt) {
+                uniquePosts.set(normalizedPost.number, normalizedPost);
+            }
+        });
+
+        return [...uniquePosts.values()];
+    }
+
+    function setArchiveReady(isReady) {
+        dynamicArchiveReady = isReady;
+        publishButton.disabled = !isReady;
     }
 
     function updateDraftNumber() {
@@ -98,15 +154,11 @@
         try {
             const post = JSON.parse(issue.body);
 
-            if (!post || typeof post.text !== "string" || !Number.isInteger(Number(post.number))) {
-                return null;
-            }
-
-            return {
+            return normalizeArchivePost({
                 ...post,
                 id: `issue-${issue.number}`,
                 createdAt: post.createdAt || issue.created_at
-            };
+            });
         } catch {
             return null;
         }
@@ -132,9 +184,11 @@
 
     async function loadPublicArchive() {
         refreshButton.disabled = true;
+        setArchiveReady(false);
+        setStatus("Conferindo a numeração no GitHub…", "working");
 
         try {
-            const issuesUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repository}/issues?state=open&labels=${encodeURIComponent(CONFIG.label)}&per_page=100&sort=created&direction=desc`;
+            const issuesUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repository}/issues?state=all&labels=${encodeURIComponent(CONFIG.label)}&per_page=100&sort=created&direction=desc`;
             const [seedResult, issuesResult] = await Promise.allSettled([
                 fetch(`../mentiras.json?time=${Date.now()}`, { cache: "no-store" }),
                 fetch(issuesUrl, {
@@ -153,16 +207,24 @@
             const issueData = issuesResponse?.ok ? await issuesResponse.json() : [];
             const seedPosts = Array.isArray(seedData?.posts) ? seedData.posts : [];
             const issuePosts = Array.isArray(issueData) ? issueData.map(parseIssue).filter(Boolean) : [];
-            loadedPosts = [...seedPosts, ...issuePosts];
+            loadedPosts = deduplicatePosts([...seedPosts, ...issuePosts]);
             nextNumber = calculateNextNumber(loadedPosts);
             renderArchive(loadedPosts);
             updateDraftNumber();
+
+            if (issuesResponse?.ok) {
+                setArchiveReady(true);
+                setStatus("Arquivo conferido. Pronto para preparar uma nova publicação.", "success");
+            } else {
+                setStatus("O arquivo do GitHub está indisponível. Atualize o arquivo antes de publicar.", "error");
+            }
         } catch (error) {
             currentPosts.replaceChildren();
             const message = document.createElement("p");
             message.className = "loading-posts is-error";
             message.textContent = error.message;
             currentPosts.append(message);
+            setStatus("Não foi possível conferir a numeração. Atualize o arquivo antes de publicar.", "error");
         } finally {
             refreshButton.disabled = false;
         }
@@ -178,6 +240,12 @@
 
     function publish(event) {
         event.preventDefault();
+
+        if (!dynamicArchiveReady) {
+            setStatus("Atualize o arquivo e aguarde a conferência do GitHub antes de publicar.", "error");
+            refreshButton.focus();
+            return;
+        }
 
         if (!form.reportValidity()) {
             setStatus("Revise os campos destacados antes de publicar.", "error");

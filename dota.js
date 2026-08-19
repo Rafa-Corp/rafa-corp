@@ -5,7 +5,7 @@
     const MINIMUM_HERO_GAMES = 10;
     const API_BASE = "https://api.opendota.com/api";
     const FALLBACK = Object.freeze({
-        wins: 364,
+        wins: 366,
         losses: 387,
         bestHero: {
             name: "Clinkz",
@@ -128,7 +128,7 @@
 
         elements.status.classList.add("is-fallback");
         elements.statusText.textContent = "Fotografia de segurança";
-        elements.updated.textContent = "OpenDota indisponível no momento. Exibindo a fotografia de 18 de agosto de 2026.";
+        elements.updated.textContent = "OpenDota indisponível no momento. Exibindo a fotografia de 19 de agosto de 2026.";
     }
 
     async function requestJson(path) {

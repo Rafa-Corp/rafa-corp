@@ -188,6 +188,10 @@ button {
     width: max-content;
 }
 
+.site-header .brand {
+    min-height: 44px;
+}
+
 .brand-name {
     font-size: 1.18rem;
     font-weight: 900;
@@ -227,6 +231,9 @@ button {
 }
 
 .site-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
     padding: 8px 14px;
     border-radius: 999px;
     color: var(--text-secondary);
@@ -1473,6 +1480,7 @@ button {
 }
 
 .footer-brand {
+    min-height: 32px;
     margin-bottom: 12px;
 }
 
@@ -1489,6 +1497,9 @@ button {
 }
 
 .footer-inner nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
     color: var(--text-secondary);
     font-size: 0.74rem;
     transition: color var(--transition);
@@ -1516,6 +1527,7 @@ button {
     align-items: center;
     justify-self: end;
     gap: 8px;
+    min-height: 32px;
     padding-bottom: 3px;
     border-bottom: 1px solid rgba(184, 220, 99, 0.4);
     color: var(--accent-green);
@@ -1730,8 +1742,7 @@ button {
     margin-bottom: clamp(44px, 6vw, 76px);
 }
 
-.lies-section-heading h2,
-.publisher-layout h2 {
+.lies-section-heading h2 {
     margin: 16px 0 0;
     font-size: clamp(2.8rem, 6vw, 5.8rem);
     font-weight: 750;
@@ -1739,8 +1750,7 @@ button {
     line-height: 0.92;
 }
 
-.lies-section-heading > p,
-.publisher-layout > div:first-child > p:last-child {
+.lies-section-heading > p {
     margin: 0;
     color: #8fa9ae;
     font-size: 0.92rem;
@@ -1845,8 +1855,7 @@ button {
     border-top: 1px solid rgba(216, 248, 255, 0.1);
 }
 
-.author-avatar,
-.composer-user > span {
+.author-avatar {
     display: grid;
     flex: 0 0 auto;
     place-items: center;
@@ -1990,6 +1999,21 @@ button {
     line-height: 1.7;
 }
 
+.published-lies-status {
+    margin: -20px 0 32px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 177, 71, 0.22);
+    border-radius: 12px;
+    background: rgba(255, 177, 71, 0.05);
+    color: #d8b980;
+    font-size: 0.68rem;
+    line-height: 1.55;
+}
+
+.published-lies-status[hidden] {
+    display: none;
+}
+
 .published-lies-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2103,98 +2127,6 @@ button {
     font-size: 0.61rem;
 }
 
-.publisher-preview {
-    border-top: 1px solid rgba(101, 223, 243, 0.12);
-    background: #071114;
-}
-
-.publisher-layout {
-    display: grid;
-    grid-template-columns: minmax(260px, 0.42fr) minmax(0, 0.58fr);
-    align-items: center;
-    gap: clamp(54px, 9vw, 120px);
-}
-
-.publisher-layout > div:first-child > p:last-child {
-    max-width: 480px;
-    margin-top: 25px;
-}
-
-.composer-shell {
-    overflow: hidden;
-    border: 1px solid rgba(101, 223, 243, 0.22);
-    border-radius: 26px;
-    background: #102127;
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.25);
-}
-
-.composer-bar,
-.composer-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 18px 20px;
-}
-
-.composer-bar {
-    border-bottom: 1px solid rgba(216, 248, 255, 0.08);
-}
-
-.composer-user {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.composer-user p {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    color: #d3edf1;
-    font-size: 0.76rem;
-    line-height: 1.4;
-}
-
-.composer-user small {
-    color: #6f898f;
-    font-size: 0.62rem;
-}
-
-.coming-soon {
-    padding: 6px 9px;
-    border: 1px solid rgba(255, 177, 71, 0.25);
-    border-radius: 999px;
-    color: #ffb147;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-size: 0.55rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-}
-
-.composer-field {
-    min-height: 178px;
-    padding: 28px;
-    color: #617a80;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(1.45rem, 3vw, 2.2rem);
-    font-style: italic;
-}
-
-.composer-actions {
-    border-top: 1px solid rgba(216, 248, 255, 0.08);
-    color: #617a80;
-    font-size: 0.65rem;
-}
-
-.composer-button {
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: rgba(101, 223, 243, 0.12);
-    color: rgba(216, 248, 255, 0.45);
-    font-weight: 750;
-}
-
 .lies-footer {
     border-color: rgba(101, 223, 243, 0.12);
     background: #050d0f;
@@ -2266,8 +2198,7 @@ button {
     .principles-layout,
     .dota-dashboard,
     .rafinha-layout,
-    .lies-hero-layout,
-    .publisher-layout {
+    .lies-hero-layout {
         grid-template-columns: 1fr;
     }
 
@@ -2339,10 +2270,6 @@ button {
     .lie-card:last-child {
         grid-column: 1 / -1;
         min-height: 280px;
-    }
-
-    .publisher-layout > div:first-child > p:last-child {
-        max-width: 620px;
     }
 
     .section-heading > p,
@@ -2624,8 +2551,7 @@ button {
         margin-top: -24px;
     }
 
-    .lies-section-heading h2,
-    .publisher-layout h2 {
+    .lies-section-heading h2 {
         font-size: clamp(2.5rem, 13vw, 3.4rem);
     }
 
@@ -2656,17 +2582,6 @@ button {
 
     .published-lie-footer p {
         max-width: none;
-    }
-
-    .composer-bar,
-    .composer-actions {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .composer-button {
-        width: 100%;
-        text-align: center;
     }
 
     .hero-intro {

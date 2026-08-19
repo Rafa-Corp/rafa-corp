@@ -3,9 +3,10 @@
 
     const section = document.querySelector("#publishedLiesSection");
     const feed = document.querySelector("#publishedLies");
-    const issuesUrl = "https://api.github.com/repos/Rafa-Corp/rafa-corp/issues?state=open&labels=mentira-de-jesus&per_page=100&sort=created&direction=desc";
+    const status = document.querySelector("#publishedLiesStatus");
+    const issuesUrl = "https://api.github.com/repos/Rafa-Corp/rafa-corp/issues?state=all&labels=mentira-de-jesus&per_page=100&sort=created&direction=desc";
 
-    if (!section || !feed) {
+    if (!section || !feed || !status) {
         return;
     }
 
@@ -90,9 +91,20 @@
     }
 
     function renderPosts(rawPosts) {
-        const posts = rawPosts
+        const uniquePosts = new Map();
+
+        rawPosts
             .map(normalizePost)
             .filter(Boolean)
+            .forEach((post) => {
+                const existing = uniquePosts.get(post.number);
+
+                if (!existing || post.createdAt >= existing.createdAt) {
+                    uniquePosts.set(post.number, post);
+                }
+            });
+
+        const posts = [...uniquePosts.values()]
             .sort((a, b) => b.createdAt - a.createdAt);
 
         feed.replaceChildren();
@@ -127,6 +139,9 @@
     }
 
     async function loadPosts() {
+        status.hidden = true;
+        status.textContent = "";
+
         try {
             const [seedResult, issuesResult] = await Promise.allSettled([
                 fetch("mentiras.json", { cache: "no-store" }),
@@ -150,8 +165,14 @@
                 : [];
 
             renderPosts([...seedPosts, ...issuePosts]);
+
+            if (!issuesResponse?.ok && seedPosts.length > 0) {
+                status.textContent = "O arquivo ao vivo está temporariamente indisponível. Exibindo as publicações salvas.";
+                status.hidden = false;
+            }
         } catch (error) {
             section.hidden = true;
+            status.hidden = true;
             console.error("Não foi possível carregar as novas mentiras.", error);
         }
     }
