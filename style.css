@@ -1057,9 +1057,37 @@ button {
 }
 
 .footer-legal {
+    display: grid;
+    gap: 12px;
     justify-self: end;
     line-height: 1.7;
     text-align: right;
+}
+
+.footer-legal p {
+    margin: 0;
+}
+
+.footer-excellence {
+    display: inline-flex;
+    align-items: center;
+    justify-self: end;
+    gap: 8px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(184, 220, 99, 0.4);
+    color: var(--accent-green);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.61rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    transition: border-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.footer-excellence:hover,
+.footer-excellence:focus-visible {
+    border-color: var(--text-main);
+    color: var(--text-main);
+    transform: translateY(-1px);
 }
 
 /* =========================
@@ -2059,6 +2087,10 @@ button {
     .footer-legal {
         justify-self: start;
         text-align: left;
+    }
+
+    .footer-excellence {
+        justify-self: start;
     }
 }
 
