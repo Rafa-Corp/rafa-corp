@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".site-header");
     const navToggle = document.querySelector(".nav-toggle");
     const siteMenu = document.querySelector("#site-menu");
+    const rafinhaNavLink = document.querySelector("#rafinhaNavLink");
+    const rafinhaMenuAudio = document.querySelector("#rafinhaMenuAudio");
 
     let currentThoughtIndex = -1;
     let thoughtTimer;
@@ -70,6 +72,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function playRafinhaMenuAudio() {
+        if (!rafinhaMenuAudio) {
+            return;
+        }
+
+        rafinhaMenuAudio.pause();
+        rafinhaMenuAudio.currentTime = 0;
+
+        const playback = rafinhaMenuAudio.play();
+
+        playback?.catch(() => {
+            // O navegador pode bloquear áudio se o clique deixar de ser um gesto do usuário.
+        });
+    }
+
     if (currentYear) {
         currentYear.textContent = new Date().getFullYear();
     }
@@ -78,6 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
     updateHeader();
 
     thoughtButton?.addEventListener("click", () => showAnotherThought(true));
+
+    rafinhaNavLink?.addEventListener("click", playRafinhaMenuAudio);
 
     navToggle?.addEventListener("click", () => {
         const isOpen = navToggle.getAttribute("aria-expanded") !== "true";
