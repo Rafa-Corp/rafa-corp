@@ -1,13 +1,13 @@
-const pensamentosDoRafinha = [
-    "Essa fera aí, bicho",
-    "HE HE",
-    "Quem não programa, não come",
-    "Talocs",
-    "KARAKAS",
-    "Uncle Rucus lançou a braba"
-];
-
 document.addEventListener("DOMContentLoaded", () => {
+    const pensamentosDoRafinha = [
+        "Essa fera aí, bicho",
+        "HE HE",
+        "Quem não programa, não come",
+        "Talocs",
+        "KARAKAS",
+        "Uncle Rucus lançou a braba"
+    ];
+
     const thoughtText = document.querySelector("#thoughtText");
     const thoughtButton = document.querySelector("#thoughtButton");
     const currentYear = document.querySelector("#currentYear");
@@ -108,8 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
+        if (event.key === "Escape" && navToggle?.getAttribute("aria-expanded") === "true") {
             setMenuState(false);
+            navToggle.focus();
         }
     });
 
