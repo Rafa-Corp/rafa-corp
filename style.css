@@ -875,6 +875,449 @@ button {
 }
 
 /* =========================
+   DOTA DO CEO
+========================= */
+
+.dota {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-top: 1px solid rgba(218, 75, 63, 0.18);
+    border-bottom: 1px solid rgba(218, 75, 63, 0.18);
+    background:
+        radial-gradient(circle at 80% 8%, rgba(218, 75, 63, 0.18), transparent 32%),
+        radial-gradient(circle at 8% 88%, rgba(219, 172, 72, 0.08), transparent 30%),
+        #0c0b0d;
+}
+
+.dota::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(125deg, transparent 0 47%, rgba(255, 255, 255, 0.018) 47% 53%, transparent 53%);
+    content: "";
+    pointer-events: none;
+}
+
+.dota-grid-bg {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+}
+
+.dota-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 48px;
+    margin-bottom: clamp(44px, 6vw, 72px);
+}
+
+.dota-heading h2 {
+    margin: 16px 0 0;
+    font-size: clamp(2.5rem, 5vw, 4.7rem);
+    font-weight: 720;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+}
+
+.dota .section-kicker {
+    color: #d76c62;
+}
+
+.dota-source,
+.dota-source a,
+.dota-live {
+    display: flex;
+    align-items: center;
+}
+
+.dota-source {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px 20px;
+}
+
+.dota-live {
+    gap: 9px;
+    min-height: 35px;
+    padding: 7px 12px;
+    border: 1px solid rgba(184, 220, 99, 0.25);
+    border-radius: 999px;
+    background: rgba(184, 220, 99, 0.07);
+    color: var(--accent-green);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dota-live > span:first-child {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 5px rgba(184, 220, 99, 0.08);
+}
+
+.dota-live.is-fallback {
+    border-color: rgba(219, 172, 72, 0.28);
+    background: rgba(219, 172, 72, 0.08);
+    color: #dbac48;
+}
+
+.dota-source a {
+    gap: 9px;
+    min-height: 35px;
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    transition: color var(--transition);
+}
+
+.dota-source a:hover,
+.dota-source a:focus-visible {
+    color: #ef8a80;
+}
+
+.dota-source a span {
+    font-size: 0.95rem;
+    transition: transform var(--transition);
+}
+
+.dota-source a:hover span {
+    transform: translate(2px, -2px);
+}
+
+.dota-dashboard {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.34fr) minmax(0, 0.66fr);
+    gap: 22px;
+}
+
+.dota-profile-card,
+.dota-stat,
+.dota-best-hero {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(24, 22, 26, 0.88);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+.dota-profile-card {
+    display: flex;
+    min-height: 480px;
+    padding: clamp(25px, 3vw, 34px);
+    border-color: rgba(218, 75, 63, 0.28);
+    border-radius: var(--radius-large);
+    flex-direction: column;
+    background:
+        radial-gradient(circle at 100% 0, rgba(218, 75, 63, 0.18), transparent 42%),
+        linear-gradient(155deg, rgba(255, 255, 255, 0.035), transparent 48%),
+        rgba(24, 22, 26, 0.94);
+}
+
+.dota-card-topline,
+.dota-profile,
+.dota-profile-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.dota-card-topline {
+    color: #d76c62;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.61rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.dota-certified {
+    padding: 5px 8px;
+    border: 1px solid rgba(218, 75, 63, 0.25);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-size: 0.53rem;
+}
+
+.dota-profile {
+    justify-content: flex-start;
+    margin-top: 34px;
+}
+
+.dota-avatar {
+    display: grid;
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(218, 75, 63, 0.42);
+    border-radius: 18px;
+    background: linear-gradient(145deg, #dd554a, #79231e);
+    color: #fff5ef;
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    place-items: center;
+    transform: rotate(-4deg);
+}
+
+.dota-profile p {
+    margin: 0 0 1px;
+    font-size: 1rem;
+    font-weight: 850;
+    letter-spacing: 0.05em;
+}
+
+.dota-profile div:last-child span {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+.dota-winrate-ring {
+    --win-angle: 174.6deg;
+    display: grid;
+    width: 190px;
+    height: 190px;
+    margin: auto;
+    border-radius: 50%;
+    background: conic-gradient(#d95045 0 var(--win-angle), rgba(255, 255, 255, 0.07) var(--win-angle) 360deg);
+    box-shadow: 0 0 0 1px rgba(218, 75, 63, 0.18), 0 22px 50px rgba(0, 0, 0, 0.24);
+    place-items: center;
+}
+
+.dota-winrate-ring > div {
+    display: grid;
+    width: 154px;
+    height: 154px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    background: #121114;
+    place-content: center;
+    text-align: center;
+}
+
+.dota-winrate-ring strong {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 1;
+}
+
+.dota-winrate-ring span {
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.dota-profile-footer {
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-size: 0.65rem;
+}
+
+.dota-profile-footer span {
+    color: var(--text-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    letter-spacing: 0.09em;
+}
+
+.dota-profile-footer strong {
+    color: var(--accent-green);
+    font-size: 0.7rem;
+}
+
+.dota-performance {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 22px;
+}
+
+.dota-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.dota-stat {
+    position: relative;
+    overflow: hidden;
+    min-height: 168px;
+    padding: clamp(20px, 2.4vw, 27px);
+    border-radius: 22px;
+}
+
+.dota-stat::before {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    left: 20px;
+    height: 2px;
+    background: var(--stat-color);
+    content: "";
+    box-shadow: 0 0 18px var(--stat-color);
+}
+
+.dota-stat-win {
+    --stat-color: #b8dc63;
+}
+
+.dota-stat-loss {
+    --stat-color: #d95045;
+}
+
+.dota-stat-total {
+    --stat-color: #dbac48;
+}
+
+.dota-stat > span {
+    display: block;
+    min-height: 34px;
+    color: var(--text-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+}
+
+.dota-stat strong {
+    display: block;
+    margin: 14px 0 7px;
+    color: var(--stat-color);
+    font-size: clamp(2.4rem, 4.2vw, 4rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    letter-spacing: -0.065em;
+    line-height: 0.88;
+}
+
+.dota-stat small {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+}
+
+.dota-best-hero {
+    display: grid;
+    grid-template-columns: auto minmax(150px, 1fr) auto;
+    align-items: center;
+    gap: clamp(20px, 3vw, 34px);
+    min-height: 282px;
+    padding: clamp(25px, 3.2vw, 38px);
+    border-color: rgba(219, 172, 72, 0.24);
+    border-radius: var(--radius-large);
+    background:
+        radial-gradient(circle at 100% 100%, rgba(219, 172, 72, 0.1), transparent 44%),
+        rgba(24, 22, 26, 0.92);
+}
+
+.best-hero-emblem {
+    display: grid;
+    width: 92px;
+    height: 92px;
+    border: 1px solid rgba(219, 172, 72, 0.34);
+    border-radius: 28px;
+    background: rgba(219, 172, 72, 0.08);
+    color: #dbac48;
+    place-items: center;
+    transform: rotate(-3deg);
+}
+
+.best-hero-emblem svg {
+    width: 54px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+}
+
+.best-hero-copy p,
+.best-hero-copy h3,
+.best-hero-copy span,
+.best-hero-stats,
+.best-hero-rule {
+    margin: 0;
+}
+
+.best-hero-copy p {
+    color: var(--text-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.best-hero-copy h3 {
+    margin-block: 7px 2px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.25rem, 4.8vw, 4.2rem);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.055em;
+    line-height: 1;
+}
+
+.best-hero-copy span {
+    color: #dbac48;
+    font-size: 0.78rem;
+    font-weight: 750;
+}
+
+.best-hero-stats {
+    display: flex;
+    gap: 13px;
+}
+
+.best-hero-stats div {
+    min-width: 80px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.025);
+    text-align: center;
+}
+
+.best-hero-stats dt {
+    color: var(--text-main);
+    font-size: 1.45rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.best-hero-stats dd {
+    margin: 6px 0 0;
+    color: var(--text-muted);
+    font-size: 0.58rem;
+}
+
+.best-hero-rule {
+    grid-column: 2 / -1;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.65rem;
+}
+
+.dota-updated {
+    margin: 20px 2px 0;
+    color: var(--text-muted);
+    font-size: 0.66rem;
+}
+
+/* =========================
    RAFINHA THOUGHT
 ========================= */
 
@@ -910,7 +1353,7 @@ button {
 }
 
 .thought-card::after {
-    content: "RF / 03";
+    content: "RF / 04";
     position: absolute;
     right: 30px;
     bottom: 8px;
@@ -1821,6 +2264,7 @@ button {
 
     .hero-layout,
     .principles-layout,
+    .dota-dashboard,
     .rafinha-layout,
     .lies-hero-layout,
     .publisher-layout {
@@ -1838,6 +2282,19 @@ button {
     .section-heading {
         grid-template-columns: 1fr;
         gap: 28px;
+    }
+
+    .dota-heading {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .dota-source {
+        justify-content: flex-start;
+    }
+
+    .dota-profile-card {
+        min-height: 450px;
     }
 
     .lies-section-heading {
@@ -2028,6 +2485,38 @@ button {
         grid-template-columns: 1fr;
     }
 
+    .dota-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dota-stat {
+        min-height: 142px;
+    }
+
+    .dota-stat > span {
+        min-height: 0;
+    }
+
+    .dota-stat strong {
+        margin-top: 12px;
+    }
+
+    .dota-best-hero {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .best-hero-stats {
+        grid-column: 1 / -1;
+    }
+
+    .best-hero-stats div {
+        flex: 1;
+    }
+
+    .best-hero-rule {
+        grid-column: 1 / -1;
+    }
+
     .featured-lie {
         grid-template-columns: 1fr;
         gap: 28px;
@@ -2201,8 +2690,53 @@ button {
 
     .section-heading h2,
     .principles-statement h2,
+    .dota-heading h2,
     .rafinha-heading h2 {
         font-size: clamp(2.25rem, 11vw, 3rem);
+    }
+
+    .dota-source {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dota-profile-card,
+    .dota-best-hero {
+        padding: 22px;
+        border-radius: 24px;
+    }
+
+    .dota-certified {
+        display: none;
+    }
+
+    .dota-winrate-ring {
+        width: 174px;
+        height: 174px;
+    }
+
+    .dota-winrate-ring > div {
+        width: 140px;
+        height: 140px;
+    }
+
+    .dota-stat {
+        padding: 22px;
+    }
+
+    .dota-best-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .best-hero-emblem {
+        width: 78px;
+        height: 78px;
+        border-radius: 23px;
+    }
+
+    .best-hero-stats,
+    .best-hero-rule {
+        grid-column: 1;
     }
 
     .activity-card {
