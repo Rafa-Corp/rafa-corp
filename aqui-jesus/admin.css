@@ -376,17 +376,17 @@ textarea::placeholder {
     color: #536a70;
 }
 
-.token-input-wrap {
+.password-input-wrap {
     position: relative;
 }
 
-.token-input-wrap input {
+.password-input-wrap input {
     padding-right: 82px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     font-size: 0.74rem;
 }
 
-.token-input-wrap button {
+.password-input-wrap button {
     position: absolute;
     top: 50%;
     right: 8px;
@@ -630,14 +630,14 @@ textarea::placeholder {
     text-transform: uppercase;
 }
 
-.token-guide {
+.password-guide {
     margin-top: 15px;
     border: 1px solid var(--border);
     border-radius: 14px;
     background: #0a181c;
 }
 
-.token-guide summary {
+.password-guide summary {
     padding: 13px 15px;
     color: var(--muted-strong);
     cursor: pointer;
@@ -645,14 +645,14 @@ textarea::placeholder {
     font-weight: 750;
 }
 
-.token-guide ol {
+.password-guide ol {
     margin: 0;
     padding: 0 26px 17px 36px;
     color: var(--muted);
     font-size: 0.63rem;
 }
 
-.token-guide li + li {
+.password-guide li + li {
     margin-top: 6px;
 }
 

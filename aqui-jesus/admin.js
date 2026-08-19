@@ -4,17 +4,17 @@
     const CONFIG = Object.freeze({
         owner: "Rafa-Corp",
         repository: "rafa-corp",
-        label: "mentira-de-jesus"
+        label: "mentira-de-jesus",
+        publicationPassword: "LINUX"
     });
 
     const form = document.querySelector("#lieForm");
-    const tokenInput = document.querySelector("#githubToken");
-    const toggleToken = document.querySelector("#toggleToken");
+    const passwordInput = document.querySelector("#publicationPassword");
+    const togglePassword = document.querySelector("#togglePassword");
     const lieInput = document.querySelector("#lieText");
     const verdictInput = document.querySelector("#verdict");
     const categoryInput = document.querySelector("#category");
     const truthInput = document.querySelector("#truthIndex");
-    const publishButton = document.querySelector("#publishButton");
     const publishStatus = document.querySelector("#publishStatus");
     const refreshButton = document.querySelector("#refreshPosts");
     const currentPosts = document.querySelector("#currentPosts");
@@ -29,7 +29,6 @@
 
     let loadedPosts = [];
     let nextNumber = 6;
-    let publishing = false;
 
     function setStatus(message, type = "neutral") {
         publishStatus.textContent = message;
@@ -67,47 +66,6 @@
         previewVerdict.textContent = verdict || "O comentário da redação aparece aqui.";
         previewCategory.textContent = (category || "Sem categoria").toUpperCase();
         previewTruth.textContent = `${truth}% verdade`;
-    }
-
-    function friendlyApiError(status, fallback) {
-        const messages = {
-            401: "Token inválido ou expirado.",
-            403: "O token não tem permissão para publicar neste repositório.",
-            404: "Repositório não encontrado ou token sem acesso.",
-            409: "O GitHub encontrou um conflito. Atualize e tente novamente.",
-            422: "O GitHub recusou a publicação. Confira a permissão Issues: Read and write."
-        };
-
-        return messages[status] || fallback || "O GitHub não aceitou a publicação.";
-    }
-
-    async function githubRequest(url, token, options = {}) {
-        const response = await fetch(url, {
-            ...options,
-            cache: "no-store",
-            headers: {
-                Accept: "application/vnd.github+json",
-                Authorization: `Bearer ${token}`,
-                "X-GitHub-Api-Version": "2022-11-28",
-                ...(options.body ? { "Content-Type": "application/json" } : {}),
-                ...options.headers
-            }
-        });
-
-        if (!response.ok) {
-            let detail = "";
-
-            try {
-                const data = await response.json();
-                detail = typeof data?.message === "string" ? data.message : "";
-            } catch {
-                detail = "";
-            }
-
-            throw new Error(friendlyApiError(response.status, detail));
-        }
-
-        return response.json();
     }
 
     function createArchiveItem(post) {
@@ -210,90 +168,62 @@
         }
     }
 
-    async function publish(event) {
-        event.preventDefault();
+    function createPublicationUrl(post) {
+        const url = new URL(`https://github.com/${CONFIG.owner}/${CONFIG.repository}/issues/new`);
+        url.searchParams.set("labels", CONFIG.label);
+        url.searchParams.set("title", `Mentira de Jesus #${String(post.number).padStart(3, "0")}`);
+        url.searchParams.set("body", JSON.stringify(post, null, 2));
+        return url.toString();
+    }
 
-        if (publishing) {
-            return;
-        }
+    function publish(event) {
+        event.preventDefault();
 
         if (!form.reportValidity()) {
             setStatus("Revise os campos destacados antes de publicar.", "error");
             return;
         }
 
-        const token = tokenInput.value.trim();
-
-        if (token.length < 20) {
-            setStatus("Informe um token de publicação válido.", "error");
-            tokenInput.focus();
+        if (passwordInput.value.trim().toUpperCase() !== CONFIG.publicationPassword) {
+            setStatus("Senha incorreta. Consulte a chefia editorial.", "error");
+            passwordInput.focus();
+            passwordInput.select();
             return;
         }
 
-        publishing = true;
-        publishButton.disabled = true;
-        setStatus("Conferindo o arquivo atual…", "working");
+        const publicationNumber = calculateNextNumber(loadedPosts);
+        const now = new Date();
+        const post = {
+            id: `mentira-${publicationNumber}-${now.getTime()}`,
+            number: publicationNumber,
+            text: cleanText(lieInput.value, 320),
+            verdict: cleanText(verdictInput.value, 220),
+            category: cleanText(categoryInput.value, 60),
+            truthIndex: Math.min(100, Math.max(0, Math.round(Number(truthInput.value)))),
+            createdAt: now.toISOString(),
+            author: "Jesus"
+        };
 
-        const apiUrl = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repository}/issues`;
-
-        try {
-            const publicationNumber = calculateNextNumber(loadedPosts);
-            const now = new Date();
-            const post = {
-                id: `mentira-${publicationNumber}-${now.getTime()}`,
-                number: publicationNumber,
-                text: cleanText(lieInput.value, 320),
-                verdict: cleanText(verdictInput.value, 220),
-                category: cleanText(categoryInput.value, 60),
-                truthIndex: Math.min(100, Math.max(0, Math.round(Number(truthInput.value)))),
-                createdAt: now.toISOString(),
-                author: "Jesus"
-            };
-
-            setStatus("Publicando na redação da RafaCorp…", "working");
-
-            const createdIssue = await githubRequest(apiUrl, token, {
-                method: "POST",
-                body: JSON.stringify({
-                    title: `Mentira de Jesus #${String(publicationNumber).padStart(3, "0")}`,
-                    body: JSON.stringify(post, null, 2),
-                    labels: [CONFIG.label]
-                })
-            });
-
-            post.id = `issue-${createdIssue.number}`;
-            lieInput.value = "";
-            verdictInput.value = "";
-            truthInput.value = "0";
-            loadedPosts = [...loadedPosts, post];
-            nextNumber = publicationNumber + 1;
-            renderArchive(loadedPosts);
-            updateDraftNumber();
-            updatePreview();
-            setStatus(`Mentira #${String(publicationNumber).padStart(3, "0")} publicada. Ela já aparece ao atualizar o arquivo público.`, "success");
-        } catch (error) {
-            setStatus(error.message || "Não foi possível publicar a mentira.", "error");
-        } finally {
-            publishing = false;
-            publishButton.disabled = false;
-        }
+        passwordInput.value = "";
+        setStatus("Mentira preparada. Abrindo a confirmação no GitHub…", "working");
+        window.location.assign(createPublicationUrl(post));
     }
 
     [lieInput, verdictInput, categoryInput, truthInput].forEach((input) => {
         input.addEventListener("input", updatePreview);
     });
 
-    toggleToken.addEventListener("click", () => {
-        const shouldShow = tokenInput.type === "password";
-        tokenInput.type = shouldShow ? "text" : "password";
-        toggleToken.textContent = shouldShow ? "Ocultar" : "Mostrar";
-        toggleToken.setAttribute("aria-label", shouldShow ? "Ocultar token" : "Mostrar token");
+    togglePassword.addEventListener("click", () => {
+        const shouldShow = passwordInput.type === "password";
+        passwordInput.type = shouldShow ? "text" : "password";
+        togglePassword.textContent = shouldShow ? "Ocultar" : "Mostrar";
+        togglePassword.setAttribute("aria-label", shouldShow ? "Ocultar senha" : "Mostrar senha");
     });
 
     refreshButton.addEventListener("click", loadPublicArchive);
     form.addEventListener("submit", publish);
     window.addEventListener("pagehide", () => {
-        tokenInput.value = "";
+        passwordInput.value = "";
     });
 
     updatePreview();
