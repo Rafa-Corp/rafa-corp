@@ -15,6 +15,7 @@
     --accent: #9c7cff;
     --accent-soft: rgba(156, 124, 255, 0.14);
     --accent-green: #b8dc63;
+    --accent-cyan: #65dff3;
     --border: rgba(255, 255, 255, 0.1);
     --border-strong: rgba(255, 255, 255, 0.17);
     --container: 1180px;
@@ -693,6 +694,14 @@ button {
     background: radial-gradient(circle, rgba(156, 124, 255, 0.42), transparent 68%);
 }
 
+.activity-card-cyan::before {
+    background: radial-gradient(circle, rgba(101, 223, 243, 0.4), transparent 68%);
+}
+
+.activity-card-wide {
+    grid-column: 1 / -1;
+}
+
 .activity-card:hover {
     border-color: var(--border-strong);
     background: var(--bg-hover);
@@ -757,6 +766,10 @@ button {
     color: var(--accent);
 }
 
+.activity-card-cyan .activity-icon {
+    color: var(--accent-cyan);
+}
+
 .activity-copy {
     margin: auto 0 36px;
 }
@@ -812,6 +825,14 @@ button {
 .activity-card-purple .activity-link:focus-visible span {
     background: var(--accent);
     transform: rotate(8deg);
+}
+
+.activity-mission {
+    cursor: default;
+}
+
+.activity-card-cyan .activity-mission span {
+    background: var(--accent-cyan);
 }
 
 /* =========================
