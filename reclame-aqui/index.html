@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0d0f">
+    <meta
+        name="description"
+        content="Central pública de tickets da RafaCorp para reclamações e sugestões."
+    >
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="RafaCorp">
+    <meta property="og:title" content="Reclame Aqui — RafaCorp">
+    <meta
+        property="og:description"
+        content="Registre um ticket, acompanhe o protocolo e veja as respostas da equipe."
+    >
+    <meta property="og:url" content="https://rafacorp.com/reclame-aqui/">
+
+    <title>Reclame Aqui — RafaCorp</title>
+
+    <link rel="canonical" href="https://rafacorp.com/reclame-aqui/">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="tickets.css">
+    <script src="../index.js" defer></script>
+    <script src="tickets.js" defer></script>
+</head>
+
+<body class="tickets-page">
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../index.html" aria-label="RafaCorp — página inicial">
+                <span class="brand-name">RAFA<span>CORP</span><sup>™</sup></span>
+                <span class="brand-tagline">Soluções extraordinárias para problemas questionáveis.</span>
+            </a>
+
+            <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="site-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="site-nav" id="site-menu" aria-label="Navegação principal">
+                <a href="../index.html#atividades">Atividades</a>
+                <a href="../index.html#principios">Princípios</a>
+                <a href="../index.html#dota-do-ceo">Dota do CEO</a>
+                <a href="../index.html#rafinha">Rafinha</a>
+                <a href="../mentiras-de-jesus.html">As Mentiras de Jesus</a>
+                <a class="nav-special" href="./" aria-current="page">Reclame Aqui</a>
+            </nav>
+
+            <a class="header-action" href="#novo-ticket">Registrar ticket</a>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <section class="tickets-hero">
+            <div class="tickets-grid-bg" aria-hidden="true"></div>
+
+            <div class="container tickets-hero-layout">
+                <div class="tickets-hero-copy">
+                    <p class="section-kicker tickets-kicker">[ CENTRAL DE ATENDIMENTO / R-001 ]</p>
+                    <h1>Reclame<br> <em>Aqui.</em></h1>
+                    <p>
+                        Encontrou um problema ou tem uma ideia que pode melhorar a firma?
+                        Abra um ticket. A equipe responde e acompanha tudo publicamente.
+                    </p>
+
+                    <div class="tickets-hero-actions">
+                        <a class="ticket-button ticket-button-primary" href="#novo-ticket">
+                            Registrar reclamação ou sugestão
+                            <span aria-hidden="true">↓</span>
+                        </a>
+                        <a class="ticket-button ticket-button-secondary" href="#consultar-ticket">
+                            Consultar protocolo
+                            <span aria-hidden="true">↘</span>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="tickets-hero-panel" aria-label="Como funciona a central de tickets">
+                    <p class="tickets-panel-kicker">FLUXO DO TICKET</p>
+                    <ol>
+                        <li><span>01</span><p>Explique o problema ou a sugestão.</p></li>
+                        <li><span>02</span><p>Confirme a abertura no GitHub.</p></li>
+                        <li><span>03</span><p>Use o número da Issue como protocolo.</p></li>
+                    </ol>
+                    <p class="tickets-public-note">
+                        <span aria-hidden="true">●</span>
+                        Não envie dados pessoais, senhas ou anexos confidenciais.
+                    </p>
+                </aside>
+            </div>
+        </section>
+
+        <section class="tickets-workspace section" id="novo-ticket" aria-labelledby="ticket-form-title">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">[ ABRIR UM TICKET ]</p>
+                        <h2>Conte o que aconteceu.</h2>
+                    </div>
+                    <p>
+                        O ticket será preparado aqui e confirmado por você no GitHub.
+                        A Issue criada será o seu protocolo de acompanhamento.
+                    </p>
+                </div>
+
+                <div class="tickets-workspace-layout">
+                    <form class="ticket-form" id="ticketForm">
+                        <div class="ticket-form-heading">
+                            <div>
+                                <p class="ticket-form-label">NOVO PROTOCOLO</p>
+                                <h3 id="ticket-form-title">Abrir atendimento.</h3>
+                            </div>
+                            <span class="ticket-form-seal">SEM DADOS PESSOAIS</span>
+                        </div>
+
+                        <div class="ticket-fields">
+                            <div class="ticket-field">
+                                <label for="ticketType">Tipo de ticket</label>
+                                <select id="ticketType" name="ticketType" required>
+                                    <option value="reclamacao">Reclamação</option>
+                                    <option value="sugestao">Sugestão</option>
+                                </select>
+                            </div>
+
+                            <div class="ticket-field ticket-field-wide">
+                                <div class="ticket-label-row">
+                                    <label for="ticketSubject">Assunto</label>
+                                    <span><output id="ticketSubjectCount">0</output>/120</span>
+                                </div>
+                                <input
+                                    id="ticketSubject"
+                                    name="ticketSubject"
+                                    type="text"
+                                    minlength="8"
+                                    maxlength="120"
+                                    required
+                                    placeholder="Ex.: O botão de atendimento sumiu no celular"
+                                >
+                            </div>
+
+                            <div class="ticket-field ticket-field-wide">
+                                <div class="ticket-label-row">
+                                    <label for="ticketDescription">Detalhes</label>
+                                    <span><output id="ticketDescriptionCount">0</output>/2000</span>
+                                </div>
+                                <textarea
+                                    id="ticketDescription"
+                                    name="ticketDescription"
+                                    rows="8"
+                                    minlength="20"
+                                    maxlength="2000"
+                                    required
+                                    placeholder="Descreva o que aconteceu, onde ocorreu e o que você esperava encontrar."
+                                ></textarea>
+                                <p class="ticket-field-help">
+                                    Esta central é pública. Não inclua nome completo, e-mail, telefone,
+                                    senhas, documentos ou qualquer informação confidencial.
+                                </p>
+                            </div>
+                        </div>
+
+                        <label class="ticket-consent">
+                            <input id="ticketConsent" name="ticketConsent" type="checkbox" required>
+                            <span>Entendo que este ticket será público no GitHub e não contém dados sensíveis.</span>
+                        </label>
+
+                        <div class="ticket-submit-row">
+                            <p class="ticket-form-status" id="ticketFormStatus" role="status" aria-live="polite">
+                                Pronto para preparar seu ticket.
+                            </p>
+                            <button class="ticket-submit" type="submit">
+                                Preparar ticket no GitHub
+                                <span aria-hidden="true">↗</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <aside class="tickets-team-card" aria-labelledby="tickets-team-title">
+                        <p class="ticket-form-label">PARA A EQUIPE</p>
+                        <h3 id="tickets-team-title">A fila também é o painel.</h3>
+                        <p>
+                            A equipe usa as Issues do GitHub para responder, alterar o status
+                            e encerrar cada ticket. O histórico fica no próprio protocolo.
+                        </p>
+                        <a
+                            class="tickets-team-link"
+                            href="https://github.com/Rafa-Corp/rafa-corp/issues?q=is%3Aissue%20label%3Aticket"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Abrir fila da equipe
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                        <ul>
+                            <li><span aria-hidden="true">✓</span> Respostas no histórico do ticket</li>
+                            <li><span aria-hidden="true">✓</span> Status controlado pela equipe</li>
+                            <li><span aria-hidden="true">✓</span> Protocolo igual ao número da Issue</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="ticket-directory section" id="consultar-ticket" aria-labelledby="ticket-directory-title">
+            <div class="container">
+                <div class="ticket-directory-heading">
+                    <div>
+                        <p class="section-kicker">[ ARQUIVO PÚBLICO ]</p>
+                        <h2 id="ticket-directory-title">Acompanhe um protocolo.</h2>
+                    </div>
+                    <p>
+                        Pesquise pelo número do ticket ou filtre a fila para acompanhar
+                        respostas, atualizações e resoluções.
+                    </p>
+                </div>
+
+                <form class="ticket-lookup" id="ticketLookupForm">
+                    <label for="ticketLookup">Número do protocolo</label>
+                    <div>
+                        <input id="ticketLookup" name="ticketLookup" type="search" inputmode="numeric" placeholder="Ex.: #42">
+                        <button type="submit">Consultar</button>
+                    </div>
+                    <p id="ticketLookupStatus" role="status" aria-live="polite"></p>
+                </form>
+
+                <div class="ticket-filters">
+                    <div class="ticket-field">
+                        <label for="ticketSearch">Pesquisar na fila</label>
+                        <input id="ticketSearch" type="search" placeholder="Assunto ou protocolo">
+                    </div>
+                    <div class="ticket-field">
+                        <label for="ticketTypeFilter">Tipo</label>
+                        <select id="ticketTypeFilter">
+                            <option value="">Todos os tipos</option>
+                            <option value="reclamacao">Reclamações</option>
+                            <option value="sugestao">Sugestões</option>
+                        </select>
+                    </div>
+                    <div class="ticket-field">
+                        <label for="ticketStatusFilter">Status</label>
+                        <select id="ticketStatusFilter">
+                            <option value="">Todos os status</option>
+                            <option value="aberta">Aberta</option>
+                            <option value="em-analise">Em análise</option>
+                            <option value="aguardando-cliente">Aguardando cliente</option>
+                            <option value="respondida">Respondida</option>
+                            <option value="resolvida">Resolvida</option>
+                            <option value="encerrada">Encerrada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="ticket-directory-meta">
+                    <p id="ticketCount" aria-live="polite">Carregando tickets…</p>
+                    <p id="ticketFeedStatus" role="status" aria-live="polite"></p>
+                </div>
+
+                <div class="ticket-feed" id="ticketFeed" aria-live="polite">
+                    <p class="ticket-loading">Carregando a fila pública…</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer tickets-footer">
+        <div class="container footer-inner">
+            <div>
+                <a class="brand footer-brand" href="../index.html">
+                    <span class="brand-name">RAFA<span>CORP</span><sup>™</sup></span>
+                </a>
+                <p>Atendimento público, rastreável e surpreendentemente organizado.</p>
+            </div>
+
+            <nav aria-label="Navegação do rodapé">
+                <a href="../index.html#atividades">Atividades</a>
+                <a href="../index.html#principios">Princípios</a>
+                <a href="../index.html#dota-do-ceo">Dota do CEO</a>
+                <a href="../index.html#rafinha">Rafinha</a>
+                <a href="../mentiras-de-jesus.html">As Mentiras de Jesus</a>
+            </nav>
+
+            <div class="footer-legal">
+                <p>© <span id="currentYear">2026</span> RafaCorp™</p>
+                <a
+                    class="footer-excellence"
+                    href="https://github.com/tpn/pdfs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    VIVA NA EXCELÊNCIA
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
