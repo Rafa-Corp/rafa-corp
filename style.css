@@ -2188,6 +2188,14 @@ button {
         display: none;
     }
 
+    .header-inner {
+        grid-template-columns: 1fr auto;
+    }
+
+    .header-action {
+        display: none;
+    }
+
     .hero-layout {
         grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.8fr);
         gap: 54px;
@@ -2213,6 +2221,40 @@ button {
 
     .header-action {
         display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+        justify-self: end;
+    }
+
+    .site-nav {
+        position: fixed;
+        top: calc(var(--header-height) + 8px);
+        right: 18px;
+        left: 18px;
+        display: grid;
+        gap: 4px;
+        padding: 10px;
+        border-radius: 18px;
+        background: rgba(23, 23, 28, 0.98);
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
+    }
+
+    .site-nav.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .site-nav a {
+        padding: 13px 14px;
+        border-radius: 10px;
+        font-size: 0.86rem;
     }
 
     .hero-layout,
@@ -2323,40 +2365,6 @@ button {
 @media (max-width: 700px) {
     .container {
         width: min(var(--container), calc(100% - 36px));
-    }
-
-    .nav-toggle {
-        display: block;
-        justify-self: end;
-    }
-
-    .site-nav {
-        position: fixed;
-        top: calc(var(--header-height) + 8px);
-        right: 18px;
-        left: 18px;
-        display: grid;
-        gap: 4px;
-        padding: 10px;
-        border-radius: 18px;
-        background: rgba(23, 23, 28, 0.98);
-        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-8px);
-        transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
-    }
-
-    .site-nav.is-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .site-nav a {
-        padding: 13px 14px;
-        border-radius: 10px;
-        font-size: 0.86rem;
     }
 
     .hero {
