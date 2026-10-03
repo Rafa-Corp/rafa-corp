@@ -98,6 +98,10 @@
                         <a class="button button-secondary" href="#rafinha">
                             Consultar o Rafinha
                         </a>
+
+                        <a class="button button-secondary" href="#trilha-sonora">
+                            Ouvir a trilha sonora
+                        </a>
                     </div>
 
                     <dl class="hero-metrics">
@@ -450,6 +454,59 @@
                 </article>
             </div>
         </section>
+
+        <section class="music-section section" id="trilha-sonora" aria-labelledby="music-title">
+            <div class="container">
+                <div class="music-card">
+                    <div class="music-cover">
+                        <img
+                            class="music-cover-art"
+                            src="assets/images/imperio-do-codigo-cover.jpg"
+                            alt="Homem com coroa digital e máscara em uma cidade iluminada por código verde, segurando um cristal."
+                        >
+                        <span class="music-cover-code">RAFACORP ORIGINAL · 001</span>
+                    </div>
+
+                    <div class="music-copy">
+                        <p class="section-kicker">[ TRILHA SONORA OFICIAL ]</p>
+                        <h2 id="music-title">Império do Código.</h2>
+                        <p>
+                            A trilha sonora da firma para escrever, compilar e conquistar
+                            mais um dia de decisões questionáveis.
+                        </p>
+
+                        <div class="music-player">
+                            <audio id="imperioAudio" controls preload="metadata">
+                                <source src="assets/audio/imperio-do-codigo.mp3" type="audio/mpeg">
+                                Seu navegador não consegue reproduzir este áudio.
+                            </audio>
+
+                            <div class="music-volume-row">
+                                <label for="imperioVolume">Volume</label>
+                                <input
+                                    id="imperioVolume"
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    step="1"
+                                    value="70"
+                                    aria-label="Volume de Império do Código"
+                                >
+                                <button
+                                    id="imperioMuteButton"
+                                    class="music-mute-button"
+                                    type="button"
+                                    aria-label="Silenciar faixa"
+                                    aria-pressed="false"
+                                >
+                                    Silenciar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -466,6 +523,7 @@
                 <a href="#principios">Princípios</a>
                 <a href="#dota-do-ceo">Dota do CEO</a>
                 <a href="#rafinha">Rafinha</a>
+                <a href="#trilha-sonora">Trilha sonora</a>
                 <a href="mentiras-de-jesus.html">As Mentiras de Jesus</a>
                 <a href="reclame-aqui/">Reclame Aqui</a>
             </nav>

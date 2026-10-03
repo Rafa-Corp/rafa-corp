@@ -1484,6 +1484,142 @@ button {
 }
 
 /* =========================
+   TRILHA SONORA
+========================= */
+
+.music-section {
+    background:
+        radial-gradient(circle at 15% 70%, rgba(156, 124, 255, 0.1), transparent 28%),
+        var(--bg-secondary);
+}
+
+.music-card {
+    display: grid;
+    grid-template-columns: minmax(250px, 0.78fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(36px, 7vw, 94px);
+    padding: clamp(24px, 5vw, 64px);
+    border: 1px solid rgba(156, 124, 255, 0.24);
+    border-radius: var(--radius-large);
+    background:
+        radial-gradient(circle at 100% 0, rgba(156, 124, 255, 0.11), transparent 38%),
+        var(--bg-card);
+}
+
+.music-cover {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 22px;
+    background: #101014;
+}
+
+.music-cover::after {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 34%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    content: "";
+}
+
+.music-cover-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-cover-code {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    left: 20px;
+    color: #f0ffe8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-shadow: 0 1px 7px rgba(0, 0, 0, 0.75);
+}
+
+.music-copy h2 {
+    margin: 18px 0 0;
+    color: var(--text-main);
+    font-size: clamp(2.8rem, 5.2vw, 5.2rem);
+    letter-spacing: -0.075em;
+    line-height: 0.94;
+}
+
+.music-copy > p:not(.section-kicker) {
+    max-width: 530px;
+    margin: 23px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.75;
+}
+
+.music-player {
+    margin-top: 34px;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(8, 8, 11, 0.42);
+}
+
+.music-player audio {
+    display: block;
+    width: 100%;
+    height: 48px;
+    accent-color: var(--accent);
+    color-scheme: dark;
+}
+
+.music-volume-row {
+    display: grid;
+    grid-template-columns: auto minmax(80px, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.music-volume-row label {
+    color: var(--text-muted);
+    font-size: 0.67rem;
+    font-weight: 700;
+}
+
+.music-volume-row input {
+    width: 100%;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.music-mute-button {
+    min-height: 36px;
+    padding: 7px 11px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.62rem;
+    font-weight: 700;
+    transition: border-color var(--transition), color var(--transition), background-color var(--transition);
+}
+
+.music-mute-button:hover,
+.music-mute-button:focus-visible {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--text-main);
+}
+
+/* =========================
    FOOTER
 ========================= */
 
@@ -2261,8 +2397,13 @@ button {
     .principles-layout,
     .dota-dashboard,
     .rafinha-layout,
+    .music-card,
     .lies-hero-layout {
         grid-template-columns: 1fr;
+    }
+
+    .music-cover {
+        width: min(100%, 420px);
     }
 
     .hero-layout {
@@ -2522,6 +2663,24 @@ button {
     .thought-footer {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .music-card {
+        padding: 22px;
+    }
+
+    .music-cover {
+        width: min(100%, 420px);
+    }
+
+    .music-volume-row {
+        grid-template-columns: auto minmax(70px, 1fr);
+        gap: 10px;
+    }
+
+    .music-mute-button {
+        grid-column: 1 / -1;
+        justify-self: end;
     }
 
     .footer-inner {

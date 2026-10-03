@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const siteMenu = document.querySelector("#site-menu");
     const rafinhaNavLink = document.querySelector("#rafinhaNavLink");
     const rafinhaMenuAudio = document.querySelector("#rafinhaMenuAudio");
+    const imperioAudio = document.querySelector("#imperioAudio");
+    const imperioVolume = document.querySelector("#imperioVolume");
+    const imperioMuteButton = document.querySelector("#imperioMuteButton");
 
     let currentThoughtIndex = -1;
     let thoughtTimer;
@@ -87,12 +90,57 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function initializeMusicPlayer() {
+        if (!imperioAudio || !imperioVolume || !imperioMuteButton) {
+            return;
+        }
+
+        function updateVolumeControls() {
+            const isMuted = imperioAudio.muted || imperioAudio.volume === 0;
+            const label = isMuted ? "Ativar som" : "Silenciar";
+
+            imperioMuteButton.textContent = label;
+            imperioMuteButton.setAttribute("aria-label", `${label} faixa`);
+            imperioMuteButton.setAttribute("aria-pressed", String(isMuted));
+            imperioVolume.value = String(Math.round(imperioAudio.volume * 100));
+        }
+
+        imperioAudio.volume = Number(imperioVolume.value) / 100;
+        updateVolumeControls();
+
+        imperioVolume.addEventListener("input", () => {
+            imperioAudio.volume = Number(imperioVolume.value) / 100;
+
+            if (imperioAudio.volume > 0 && imperioAudio.muted) {
+                imperioAudio.muted = false;
+            }
+        });
+
+        imperioMuteButton.addEventListener("click", () => {
+            if (imperioAudio.muted || imperioAudio.volume === 0) {
+                imperioAudio.muted = false;
+
+                if (imperioAudio.volume === 0) {
+                    imperioAudio.volume = 0.7;
+                    imperioVolume.value = "70";
+                }
+            } else {
+                imperioAudio.muted = true;
+            }
+
+            updateVolumeControls();
+        });
+
+        imperioAudio.addEventListener("volumechange", updateVolumeControls);
+    }
+
     if (currentYear) {
         currentYear.textContent = new Date().getFullYear();
     }
 
     showAnotherThought(false);
     updateHeader();
+    initializeMusicPlayer();
 
     thoughtButton?.addEventListener("click", () => showAnotherThought(true));
 
